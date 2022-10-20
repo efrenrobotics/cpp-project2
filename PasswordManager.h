@@ -1,20 +1,16 @@
 #include <string>
-#include <iostream>
-
-using namespace std;
 
 class PasswordManager {
-    string username, password;
+    private:
+        std::string username, password;
+        std::string encrypt(std::string password);
+        bool meetsCriteria(std::string password);
 
     public: 
-        void setUsername(string user);
-        void setEncryptedPassword(string pwd);
-        string getUsername();
-        string getEncryptedPassword();
-        bool setNewPassword(string pwd);
-        bool authenticate(string pwd);
-    
-    private: 
-        string encrypt(string password);
-        bool meetsCriteria(string password);
+        void setUsername(std::string user);
+        void setEncryptedPassword(std::string pwd);
+        std::string getUsername();
+        std::string getEncryptedPassword();
+        bool setNewPassword(std::string pwd);
+        bool authenticate(std::string pwd);
 };

@@ -1,5 +1,7 @@
 #include "PasswordManager.h"
 
+using namespace std;
+
 // Username setter function
 // efren
 void PasswordManager::setUsername(string user) {
@@ -59,38 +61,17 @@ bool PasswordManager::meetsCriteria(string password) {
     if (password.length() < MIN_LENGTH) {
         return false;
     }
-    int index = 0;
-    bool end = false;
-    while (index < password.length() && !end) {
+    bool upper, lower, digit = false;
+    for (int index = 0; index < password.length(); index++) {
         if (isupper(password[index])) {
-            end = true;
+            upper = true;
         }
-        index++;
-    }
-    if (index == password.length() && !end) {
-        return false;
-    }
-    index = 0;
-    end = false;
-    while (index < password.length() && !end) {
         if (islower(password[index])) {
-            end = true;
+            lower = true;
         }
-        index++;
-    }
-    if (index == password.length() && !end) {
-        return false;
-    }
-    index = 0;
-    end = false;
-    while (index < password.length() && !end) {
         if (isdigit(password[index])) {
-            end = true;
+            digit = true;
         }
-        index++;
     }
-    if (index == password.length() && !end) {
-        return false;
-    }
-    return true;
+    return upper && lower && digit;
 }
