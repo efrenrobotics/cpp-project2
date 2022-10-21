@@ -1,6 +1,9 @@
 #include "PasswordManager.h"
+#include <iostream>
 
 using namespace std;
+
+// Class to manage a user's password, set a new password and encrypt the password
 
 // Username setter function
 // efren
@@ -39,16 +42,16 @@ bool PasswordManager::setNewPassword(string pwd) {
 // check if the password entered is correct
 // Angel drove here
 bool PasswordManager::authenticate(string pwd) {
-    string encryptedPassword = encrypt(password);
-    return pwd.compare(encryptedPassword) == 0;
+    string encryptedPassword = encrypt(pwd);
+    return password.compare(encryptedPassword) == 0;
 }
 
 // encrypt a password using the encryption algorithm
 // Angel drove here
-string PasswordManager::encrypt(string password) {
+string PasswordManager::encrypt(string pwd) {
     string encryptedPassword = "";
-    for (int index = 0; index < password.length(); index++) {
-        char character = ((password[index] - 33)  + 25) % 94 + 33;
+    for (int index = 0; index < pwd.length(); index++) {
+        char character = ((pwd[index] - 33)  + 25) % 94 + 33;
         encryptedPassword += character;
     }
     return encryptedPassword;
@@ -56,20 +59,20 @@ string PasswordManager::encrypt(string password) {
 
 // check if the password meets the criteria for a good password
 // Angel drove here
-bool PasswordManager::meetsCriteria(string password) {
+bool PasswordManager::meetsCriteria(string pwd) {
     static int MIN_LENGTH = 8;
-    if (password.length() < MIN_LENGTH) {
+    if (pwd.length() < MIN_LENGTH) {
         return false;
     }
     bool upper, lower, digit = false;
-    for (int index = 0; index < password.length(); index++) {
-        if (isupper(password[index])) {
+    for (int index = 0; index < pwd.length(); index++) {
+        if (isupper(pwd[index])) {
             upper = true;
         }
-        if (islower(password[index])) {
+        if (islower(pwd[index])) {
             lower = true;
         }
-        if (isdigit(password[index])) {
+        if (isdigit(pwd[index])) {
             digit = true;
         }
     }

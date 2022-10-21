@@ -1,12 +1,13 @@
 #include <string>
 
+// header file for password manager class
 class PasswordManager {
     private:
         std::string username, password;
-        std::string encrypt(std::string password);
-        bool meetsCriteria(std::string password);
+        std::string encrypt(std::string pwd);
+        bool meetsCriteria(std::string pwd);
 
-    public: 
+    public:
         void setUsername(std::string user);
         void setEncryptedPassword(std::string pwd);
         std::string getUsername();
