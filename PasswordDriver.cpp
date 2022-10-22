@@ -7,6 +7,7 @@ using namespace std;
 
 const static int NUM_PASSWORDS = 3;
 
+// angel
 PasswordManager *readFile(ifstream &passwordsFile) {
     PasswordManager *passwords = new PasswordManager[NUM_PASSWORDS];
     for (int index = 0; index < NUM_PASSWORDS; index++) {
@@ -22,6 +23,8 @@ PasswordManager *readFile(ifstream &passwordsFile) {
     return passwords;
 }
 
+
+// efren
 void displayCriteria() {
     cout << "New passwords must have all of the following." << endl;
     cout << "At least 8 characters long." << endl;
@@ -30,6 +33,7 @@ void displayCriteria() {
     cout << "At least 1 digit." << endl;
 }
 
+// efren
 PasswordManager *getManager(PasswordManager *passwords, string username) {
     for (int index = 0; index < NUM_PASSWORDS; index++) {
         PasswordManager *manager = passwords + index;
@@ -40,6 +44,7 @@ PasswordManager *getManager(PasswordManager *passwords, string username) {
     return nullptr;
 }
 
+// angel & efren
 void processNewPassword(ifstream &passwordsFile, PasswordManager *passwords) {
     string username, oldPassword, newPassword;
     cout << "Please enter your username: ";
@@ -60,6 +65,7 @@ void processNewPassword(ifstream &passwordsFile, PasswordManager *passwords) {
     }
 }
 
+// angel
 void writeNewPassword(PasswordManager *passwords) {
     ofstream passwordsFile;
     passwordsFile.open("passwords.txt", ios::trunc);
@@ -70,6 +76,7 @@ void writeNewPassword(PasswordManager *passwords) {
     passwordsFile.close();
 }
 
+// angel
 int main() {
     ifstream passwordsFile;
     passwordsFile.open("passwords.txt");
